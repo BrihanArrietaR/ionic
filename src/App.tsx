@@ -1,7 +1,7 @@
 import { Redirect, Route } from 'react-router-dom';
 import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import Home from './pages/Home';
+import Home from './pages/home/Home';
 import ViewMessage from './pages/ViewMessage';
 
 /* Core CSS required for Ionic components to work properly */
@@ -22,21 +22,36 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
+import SigIn from './pages/login/SignIn';
+import Register from './pages/login/Register';
+import PrincipalMenu from './pages/menu/PrincipalMenu';
+import Configuration from './pages/configuration/Configuration';
+import Cart from './pages/shop/Cart';
 
 setupIonicReact();
 
 const App: React.FC = () => (
+  
   <IonApp>
     <IonReactRouter>
       <IonRouterOutlet>
         <Route path="/" exact={true}>
-          <Redirect to="/home" />
+          <Redirect to="/signIn" />
         </Route>
-        <Route path="/home" exact={true}>
-          <Home />
+        <Route path="/signIn" exact={true}>
+          <SigIn/>
         </Route>
-        <Route path="/message/:id">
-           <ViewMessage />
+        <Route path="/register">
+           <Register/>
+        </Route>
+        <Route path="/menu">
+           <PrincipalMenu/>
+        </Route>
+        <Route path="/configuration">
+           <Configuration/>
+        </Route>
+        <Route path="/cart">
+           <Cart/>
         </Route>
       </IonRouterOutlet>
     </IonReactRouter>
